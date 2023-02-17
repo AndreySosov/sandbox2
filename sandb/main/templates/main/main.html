@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css_add %}
+      <link type="text/css" rel="stylesheet" href=" {% static 'main/css/style1.css' %}">
+{% endblock %}
+{% block title %}
+  Веб Дневник
+{% endblock %}
+
+
+{% block content %}
+        <header>
+		<h1>PSYNOTE</h1>
+		<nav>
+			<ul>
+				<li><a href="{% url 'login' %}">Вход</a></li>
+				<li><a href="{% url 'register' %}">Регистрация</a></li>
+<!--				<li><a href="#">Контакты</a></li>-->
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<section>
+<!--			<h2>Описание функционала приложения</h2>-->
+			<p>PsyNote - приложение для записи своих автоматических мыслей,
+                    установок, эмоций и так далее. Дневник поможет
+                    автоматизировать и проанализировать ваше мышление.
+                    Обнаружить закономерности в мышлении. Поможет обнаружить
+                    белые пятна, которые вы не замечаете в своем мышлении, но
+                    которые очень мешают вашей продуктивности, достижениям
+                    целей, ощущению удовлетворенности</p>
+		</section>
+
+		<section>
+<!--			<h2>Основные преимущества приложения</h2>-->
+<!--			<ul>-->
+<!--				<li>Преимущество 1</li>-->
+<!--				<li>Преимущество 2</li>-->
+<!--				<li>Преимущество 3</li>-->
+<!--			</ul>-->
+            <div class="functionality">
+              <div class="functionality-item">
+                <img src="{% static 'main/img/pen.png' %}" alt="Icon 1">
+                <h3>Запись в дневник</h3>
+                <p>Приложение позволяет записывать и сохранять свои мысли и наблюдения</p>
+              </div>
+
+              <div class="functionality-item">
+                <img src="{% static 'main/img/dashboard.png' %}" alt="Icon 2">
+                <h3>Построение графиков</h3>
+                <p>На основе анализа записей строятся разные графики</p>
+              </div>
+
+              <div class="functionality-item">
+                <img src="{% static 'main/img/settings.png' %}" alt="Icon 3">
+                <h3>Гибкая настройка приложения</h3>
+                <p>Возможность настройки приложения под себя</p>
+              </div>
+            </div>
+
+		</section>
+	</main>
+
+	<footer>
+		<p>Copyright © 2023</p>
+	</footer>
+<!--    <div class="welcome-text">-->
+<!--            <h1>Это главное окно.</h1>-->
+<!--            <p>-->
+<!--                Здесь будет находиться описание и суть проекта.<br>-->
+<!--                А так же присутствуют кнопки регистрации и входа в приложение-->
+<!--            </p>-->
+<!--        </div>-->
+
+<!--        <div class="login-logout">-->
+<!--            <a href="{% url 'login' %}">Вход</a> | <a href="{% url 'register' %}">Регистрация</a>-->
+<!--        </div>-->
+<!--    </div>-->
+
+{% endblock %}

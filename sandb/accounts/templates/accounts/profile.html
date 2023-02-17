@@ -1,0 +1,46 @@
+{% extends "base_prof.html" %}
+{% block title %}Profile Page{% endblock title %}
+{% block content %}
+        <div class="acc-photo">
+          <img class="avatar" src="{{ user.profile.img.url }}" alt="ava">
+        </div>
+{% if user_form.errors %}
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <div id="form_errors">
+                {% for key, value in user_form.errors.items %}
+                    <strong>{{ value }}</strong>
+                {% endfor %}
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
+    <div class="form-content">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class="small mb-1">Username:</label>
+                            {{ user_form.username }}
+                        <label class="small mb-1">Email:</label>
+                            {{ user_form.email }}
+                    </div>
+                    <div class="form-group">
+                        <a href="{% url 'pwd_change' %}" class="btn btn-primary me-3">Сменить пароль</a>
+                        <br>
+                        <label class="small mb-1">Сменить аватар:</label>
+                        {{ profile_form.img }}
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+            <a href="{% url 'home' %}" class="btn btn-primary">Главная</a>
+            <a href="{% url 'delete_profile' %}" class="btn btn-danger">Удалить профиль</a>
+        </form>
+    </div>
+    <br>
+    <a href="{% url 'password_reset' %}" class="btn btn-primary"><i>Забыли пароль?</i></a>
+{% endblock content %}

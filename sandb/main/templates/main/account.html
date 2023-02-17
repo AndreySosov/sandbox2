@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css_add %}
+      <link type="text/css" rel="stylesheet" href=" {% static 'main/css/style_account.css' %}">
+{% endblock %}
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+  <div id="wrapper">
+    <div class="menu">
+      <!-- <a href="#" class="menu-btn">
+        <span></span>
+      </a> -->
+      <nav class="menu-list">
+          <a class="link" href="#"><img class="icons" src="{% static 'main/img/logo2.svg' %}" alt=""><span>S.NOTE</span></a>
+          <a class="link link-hvr" href="#"><img class="icons hvr" src="{% static 'main/img/Button (1).svg' %}" alt="">Контакты <div class="hov"></div></a>
+          <a class="link link-hvr" href="#"><img class="icons hvr" src="{% static 'main/img/Button (3).svg' %}" alt="">Контакты <div class="hov"></div></a>
+          <a class="link link-hvr" href="#"><img class="icons hvr" src="{% static 'main/img/Button (4).svg' %}" alt="">Контакты <div class="hov"></div></a>
+          <a class="link link-hvr" href="#"><img class="icons hvr" src="{% static 'main/img/Button (6).svg' %}" alt="">Контакты <div class="hov"></div></a>
+          <a class="link link-hvr" href="{% url 'profile' %}"><img class="icons hvr" src="{% static 'main/img/Button (5).svg' %}" alt="">Настройки <div class="hov"></div></a>
+          <a class="link link-hvr" href="{% url 'logout' %}"><img class="icons hvr" src="{% static 'main/img/Logout.svg' %}" alt="">Выход <div class="hov"></div></a>
+      </nav>
+
+    </div>
+
+    <div class="content">
+      <div class="card-box cont">
+        <div class="card-box__wrapper">
+          <div id="search">
+            <div class="search-box">
+              <input type="text" maxlength="12" placeholder="Search all notes and tags" class="searchbar">
+              <img src="{% static 'main/img/search.svg' %}" alt="search icon" class="button">
+            </div>
+
+          </div>
+
+          <div class="notes-container">
+          {% if request.user.is_authenticated %}
+          {% for nt in user_notes %}
+            <div class="card">
+              <div class='card-text'>
+                <a href="{% url 'edit' nt.id %}">{{ nt.id }}</a>
+                <h3>{{ nt.date | date:"j.m.Y" }}</h3>
+                <p>{{ nt.note }}</p>
+              </div>
+            </div>
+          {% endfor %}
+          {% else %}
+          <h2>Войдите или зарегистрируйтесь</h2>
+          {% endif %}
+        </div>
+        </div>
+<!--        <div class="all-notes">-->
+<!--          <h1>All notes</h1>-->
+<!--        </div>-->
+
+    </div>
+
+      <div class="input-area cont">
+        <div class="btn">
+          <a class="add-note" href="{% url 'home' %}"><img src="{% static 'main/img/note.svg' %}" class="new-note" alt=""></a>
+        </div>
+
+        <div class="ttl">
+          <h2 class="new_note">Новая запись</h2>
+          <p class="date">Дата</p>
+        </div>
+        <form class="note-area" action="" method="post">
+          {% csrf_token %}
+
+          {% for field in form %}
+            <div class="form-group">
+<!--              <textarea class="form-control" id="text_form" rows="3" placeholder="Введите текст"></textarea>-->
+              {{ field.errors }}
+              {{ field }}
+            </div>
+          {% endfor %}
+            <button type="submit" class="btn btn-primary">Отправить</button>
+        </form>
+<!--        <form class="note-area" action="" method="post">-->
+<!--          {% csrf_token %}-->
+
+<!--          {% for field in form %}-->
+
+<!--          <div>-->
+<!--            {{ field.errors }}-->
+<!--            {{ field }}-->
+<!--          </div>-->
+
+<!--          {% endfor %}-->
+
+<!--          <button class="btn-sub" type="submit">Отправить</button>-->
+<!--        </form>-->
+      </div>
+
+      <div class="other cont">
+        <div class="acc-photo">
+          <img class="avatar" src="{{ user.profile.img.url }}" alt="ava">
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+{% else %}
+  <div>
+    <h1>Зарегистрируйтесь или авторизуйтесь</h1>
+    <a class="reg-link reg" href="{% url 'register' %}">Регистрация</a> <span>|</span> <a class="reg-link login" href="{% url 'login' %}">Вход</a>
+  </div>
+{% endif %}
+{% endblock %}
+

@@ -1,0 +1,272 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+p {
+  margin-bottom: 0; }
+
+*, *:before, *:after {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box; }
+
+body {
+  margin: 0px;
+  text-size-adjust: 100%;
+  display: block; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+:focus {
+  outline: 0; }
+
+ins {
+  text-decoration: none; }
+
+del {
+  text-decoration: line-through; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* Remove outline on the forms and links */
+:active, :hover, :focus {
+  outline: 0;
+  outline-offset: 0; }
+
+#wrapper {
+  background: #F5F5F5;
+  max-width: 100%;
+  max-height: 1024px;
+  height: 100vh;
+  display: flex;
+  justify-content: center; }
+  #wrapper .menu {
+    width: 250px;
+    height: 100%;
+    padding-left: 15px;
+    max-height: 1024px;
+    left: 1px;
+    top: 1px;
+    display: block;
+    background: #FFFFFF;
+    border: 1px solid rgba(204, 204, 204, 0.4);
+    box-shadow: 10px 0px 25px 0px rgba(0, 0, 0, 0.01); }
+    #wrapper .menu .menu-list {
+      display: flex;
+      justify-content: flex-start;
+      height: 100%;
+      flex-direction: column; }
+      #wrapper .menu .menu-list .link .icons {
+        display: block;
+        width: 46px;
+        height: 46px;
+        margin-right: 10px; }
+    #wrapper .menu .menu-list a {
+      text-decoration: none;
+      color: black;
+      margin-top: 10px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center; }
+    #wrapper .menu .menu-list a span {
+      margin-left: 5px;
+      font-weight: 900;
+      font-family: 'Inter';
+      font-style: normal;
+      font-size: 27px;
+      line-height: 33px;
+      /* identical to box height */
+      letter-spacing: 0.02em;
+      color: #000000; }
+    #wrapper .menu .menu-list a:last-child {
+      position: fixed;
+      bottom: 25px; }
+    #wrapper .menu .menu-list a:first-child {
+      margin-top: 35px;
+      margin-bottom: 15px;
+      display: inline-flex;
+      align-items: center; }
+    #wrapper .menu .menu-list a .hov {
+      width: 10px;
+      height: 46.65px; }
+    #wrapper .menu .menu-list .link-hvr:hover {
+      background: #3772FF;
+      border-radius: 25px 10px 10px 25px; }
+  #wrapper .content {
+    display: grid;
+    grid-template-columns: 1.5fr 4fr 0.5fr;
+    height: 100vh;
+    position: relative;
+    width: 100%; }
+    #wrapper .content .cont {
+      margin-top: 30px;
+      padding: 5px;
+      height: 90vh; }
+    #wrapper .content .card-box .card-box__wrapper {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+      #wrapper .content .card-box .card-box__wrapper .all-notes {
+        text-align: center; }
+      #wrapper .content .card-box .card-box__wrapper #search {
+        width: 298px;
+        height: 40px;
+        padding: 10px;
+        position: relative; }
+        #wrapper .content .card-box .card-box__wrapper #search .search-box {
+          width: 100%;
+          position: relative; }
+          #wrapper .content .card-box .card-box__wrapper #search .search-box .searchbar {
+            position: absolute;
+            font-size: 15px;
+            width: 90%;
+            height: 10px;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+            padding: 15px;
+            transition: all .1s;
+            transition-delay: .1s; }
+          #wrapper .content .card-box .card-box__wrapper #search .search-box .button {
+            height: 20px;
+            position: absolute;
+            top: 10px;
+            right: 1rem;
+            transition: all .1s;
+            transition-delay: .1s; }
+          #wrapper .content .card-box .card-box__wrapper #search .search-box .button:hover {
+            cursor: pointer; }
+      #wrapper .content .card-box .card-box__wrapper .notes-container {
+        height: 90%;
+        overflow: hidden;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        scrollbar-width: none;
+        scrollbar-width: none;
+        -ms-overflow-style: none; }
+        #wrapper .content .card-box .card-box__wrapper .notes-container .card {
+          width: 298px;
+          height: 88px;
+          border-radius: 10px;
+          overflow: hidden;
+          margin-bottom: 5px;
+          padding: 3px; }
+          #wrapper .content .card-box .card-box__wrapper .notes-container .card .title {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 27px; }
+          #wrapper .content .card-box .card-box__wrapper .notes-container .card .card-text {
+            text-align: left; }
+            #wrapper .content .card-box .card-box__wrapper .notes-container .card .card-text .note-text {
+              font-family: 'Inter';
+              font-style: normal;
+              font-weight: 400;
+              font-size: 13px;
+              line-height: 20px; }
+          #wrapper .content .card-box .card-box__wrapper .notes-container .card .card-text {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical; }
+          #wrapper .content .card-box .card-box__wrapper .notes-container .card .card-text:after {
+            content: "";
+            text-align: right;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            height: 1.2em;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white 100%);
+            pointer-events: none; }
+      #wrapper .content .card-box .card-box__wrapper .notes-container::-webkit-scrollbar {
+        width: 0; }
+    #wrapper .content .input-area .btn .add-note {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border-radius: 50%;
+      border: 0px;
+      height: 35px;
+      width: 35px;
+      background: #3772ff; }
+      #wrapper .content .input-area .btn .add-note .new-note {
+        position: absolute;
+        height: 18px;
+        width: 20px;
+        margin: 0; }
+    #wrapper .content .input-area .ttl .new_note {
+      /* Heading 1 */
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 26px;
+      line-height: 31px;
+      /* identical to box height, or 119% */
+      /* Light Colors/Primary - Light */
+      color: #303030; }
+    #wrapper .content .input-area .ttl .date {
+      /* Body small */
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 900;
+      font-size: 13px;
+      line-height: 20px;
+      /* identical to box height, or 154% */
+      /* Light Colors/Gray 02 - Light */
+      color: #898989; }
+    #wrapper .content .input-area .note-area .form-group {
+      display: flex;
+      justify-content: start;
+      overflow: hidden;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      position: relative;
+      width: 100%;
+      height: 250px; }
+      #wrapper .content .input-area .note-area .form-group #id_note {
+        overflow: hidden;
+        overflow-y: scroll;
+        border: 0px;
+        position: absolute;
+        width: 90%;
+        height: 100%;
+        box-shadow: none; }
+      #wrapper .content .input-area .note-area .form-group #id_note::-webkit-scrollbar {
+        width: 0; }
+    #wrapper .content .input-area .note-area .form-group::-webkit-scrollbar {
+      width: 0; }
+  #wrapper .dark-bg[type=checkbox]:checked ~ {
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 99999px rgba(0, 0, 0, 0.5);
+    /* fallback for IE */
+    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5); }
+  #wrapper .other .acc-photo .avatar {
+    width: 73px;
+    height: 73px;
+    border-radius: 50%; }
+
+/*# sourceMappingURL=style_account.css.map */

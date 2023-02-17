@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css_add %}
+      <link type="text/css" rel="stylesheet" href=" {% static 'notes/css/editing_note.css' %}">
+{% endblock %}
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+  <div id="wrapper">
+    <div class="menu">
+      <a href="#" class="menu-btn">
+        <span></span>
+      </a>
+      <nav class="menu-list">
+        <a href="#">Главная</a>
+        <a href="#">Анализ</a>
+        <a href="#">Настройки</a>
+        <a href="#">Поддержка</a>
+        <a href="#">Выход</a>
+      </nav>
+    </div>
+
+    <div class="content">
+      <div class="card-box cont">
+        <div class="all-notes">
+          <h1>All notes</h1>
+        </div>
+        <div id="search">
+          <input type="text" maxlength="12" placeholder="Search all notes and tags" class="searchbar">
+          <img src=" {% static 'main/img/search.svg' %}" alt="search icon" class="button">
+        </div>
+
+        <div class="notes-container">
+          {% if request.user.is_authenticated %}
+          <div class="user-id">ID пользователя --- {{ request.user.id }}</div>
+          {% for nt in user_notes %}
+            <div class="card">
+              <div class='success'>
+                <a href="{% url 'edit' nt.id %}">{{ nt.id }}</a>
+                <br>
+                <h3>{{ nt.date | date:"j.m.Y"}}</h3>
+                <br>
+                <p>{{ nt.note }}</p>
+              </div>
+            </div>
+          {% endfor %}
+          {% else %}
+          <h2>Войдите или зарегистрируйтесь</h2>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="input-area cont">
+        <div class="login-logout">
+          <div class="rg">
+            {% if request.user.is_authenticated %}
+              <p class="user_name">{{ user.username }}</p> <span>|</span> <a class="reg-link login" href="{% url 'logout' %}">Выйти</a>
+            {% else %}
+              <a class="reg-link reg" href="{% url 'register' %}">Регистрация</a> <span>|</span> <a class="reg-link login" href="{% url 'login' %}">Вход</a>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="btn">
+          <button class="save-note"></button>
+          <button class="oth"></button>
+        </div>
+
+        <div class="edit">
+          <div class="title-note">
+            <h2>{{note.id}}</h2>
+            <h2>{{note.date}}</h2>
+          </div>
+          <br>
+          <br>
+
+          <form class="note-area" action="" method="POST">
+            {% csrf_token %}
+
+            {% for field in form %}
+
+            <div>
+              {{ field.errors }}
+              {{ field }}
+            </div>
+
+            {% endfor %}
+
+            <input type="submit" class="btn btn-info" value="Сохранить">
+            <a href="{% url 'delete-note' note.id %}" class="btn btn-danger">Удалить</a>
+          </form>
+
+        </div>
+      </div>
+
+      <div class="other cont">
+        <div class="acc-photo">
+          <img src=" {% static 'main/img/ava.jpg' %}" alt="search icon" class="avatar" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+{% else %}
+  <div>
+    <h1>Зарегистрируйтесь или авторизуйтесь</h1>
+    <a class="reg-link reg" href="{% url 'register' %}">Регистрация</a> <span>|</span> <a class="reg-link login" href="{% url 'login' %}">Вход</a>
+  </div>
+{% endif %}
+{% endblock %}
+
